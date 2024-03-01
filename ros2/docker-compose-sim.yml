@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  gazebo:
+    image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros2-gazebo"
+    networks:
+      - default
+    environment:
+      - "ROS_DOMAIN_ID=1"
+      - "DISPLAY=:2"
+    volumes:
+      - "/tmp/.X11-unix:/tmp/.X11-unix"
+  slam:
+    image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros2-slam"
+    depends_on:
+      - gazebo
+    networks:
+      - default
+    environment:
+      - "ROS_DOMAIN_ID=1"  
+      - "DISPLAY=:1"
+    volumes:
+      - "/tmp/.X11-unix:/tmp/.X11-unix"
+
+networks:
+  default:
+    driver: bridge

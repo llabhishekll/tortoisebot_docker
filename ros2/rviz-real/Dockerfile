@@ -17,7 +17,7 @@ RUN apt-get install -y \
     ros-galactic-nav2* ros-galactic-urdf ros-galactic-v4l2-camera
 
 # setup workspace
-RUN git clone -b ros2 https://github.com/llabhishekll/tortoisebot_archive.git /ros2_ws/src/
+RUN git clone -b ros2-galactic https://github.com/rigbetellabs/tortoisebot.git /ros2_ws/src/
 RUN rm -rf /ros2_ws/src/tortoisebot_control
 RUN /bin/bash -c "source /opt/ros/galactic/setup.bash; cd /ros2_ws; colcon build"
 
@@ -37,4 +37,4 @@ EXPOSE 7400-8000
 
 # entry point
 ENTRYPOINT ["/ros_entrypoint.sh"]
-CMD ["ros2", "launch", "tortoisebot_bringup", "bringup.launch.py", "use_sim_time:=True"]
+CMD ["ros2", "launch", "tortoisebot_description", "rviz.launch.py", "use_sim_time:=False"]
