@@ -20,6 +20,7 @@ pull:
 	@docker pull osrf/ros:galactic-desktop-focal
 	@docker pull ros:galactic-ros-core-focal
 	@docker pull nginx:stable-bullseye
+	@docker pull llabhishekll/llabhishekll-cp22 -a
 	# verify
 	@docker images
 
