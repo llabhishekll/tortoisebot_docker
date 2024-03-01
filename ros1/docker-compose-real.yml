@@ -1,0 +1,50 @@
+version: "2.4"
+
+services:
+  roscore:
+    image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros1-roscore"
+    networks:
+      - default
+    ports:
+      - "11311:11311"
+  bringup:
+    image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros1-bringup-real"
+    depends_on:
+      - roscore
+    networks:
+      - default
+    environment:
+      - "ROS_MASTER_URI=http://roscore:11311"
+    volumes:
+      - "/dev/input:/dev/input"
+      - "/dev/bus/usb:/dev/bus/usb"
+      - "/dev/video0:/dev/video0"
+      - "/dev/gpiomem:/dev/gpiomem"
+    device_cgroup_rules:
+      - "c 13:* rmw"
+      - "c 189:* rmw"
+      - "c 81:* rmw"
+      - "c 160:* rmw"
+  slam:
+    image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros1-slam-real"
+    depends_on:
+      - roscore
+    networks:
+      - default
+    environment:
+      - "ROS_MASTER_URI=http://roscore:11311"
+  rviz:
+    image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros1-rviz-real"
+    depends_on:
+      - roscore
+    networks:
+      - default
+    environment:
+      - "ROS_MASTER_URI=http://roscore:11311"
+      - "DISPLAY=:1"
+    volumes:
+      - "/tmp/.X11-unix:/tmp/.X11-unix"
+
+networks:
+  default:
+    driver: bridge

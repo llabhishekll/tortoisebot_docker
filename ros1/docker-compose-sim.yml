@@ -1,0 +1,60 @@
+version: "3"
+
+services:
+  roscore:
+    image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros1-roscore"
+    networks:
+      - default
+  gazebo:
+    image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros1-gazebo"
+    depends_on:
+      - roscore
+    networks:
+      - default
+    environment:
+      - "ROS_MASTER_URI=http://roscore:11311"
+      - "DISPLAY=:2"
+    volumes:
+      - "/tmp/.X11-unix:/tmp/.X11-unix"
+  slam:
+    image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros1-slam"
+    depends_on:
+      - roscore
+    networks:
+      - default
+    environment:
+      - "ROS_MASTER_URI=http://roscore:11311"
+      - "DISPLAY=:1"
+    volumes:
+      - "/tmp/.X11-unix:/tmp/.X11-unix"
+  waypoints:
+    image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros1-waypoints"
+    depends_on:
+      - roscore
+    networks:
+      - default
+    environment:
+      - "ROS_MASTER_URI=http://roscore:11311"
+  bridge:
+    image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros1-bridge"
+    depends_on:
+      - roscore
+      - gazebo
+    networks:
+      - default
+    environment:
+      - "ROS_MASTER_URI=http://roscore:11311"
+    ports:
+      - "9090:9090"
+      - "11315:11315"
+      - "20001:20001"
+  webapp:
+    image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros1-webapp"
+    networks:
+      - default
+    ports:
+      - "7000:80"
+
+networks:
+  default:
+    driver: bridge
