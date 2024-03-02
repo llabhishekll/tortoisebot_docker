@@ -18,7 +18,7 @@ RUN apt-get install -y \
 
 # setup workspace
 RUN git clone -b ros2 https://github.com/llabhishekll/tortoisebot_archive.git /ros2_ws/src/
-RUN rm -rf /ros2_ws/src/tortoisebot_control
+RUN /bin/bash -c "rm -rf /ros2_ws/src/tortoisebot_control/*"
 RUN /bin/bash -c "source /opt/ros/galactic/setup.bash; cd /ros2_ws; colcon build"
 
 # add underlay and overlay workspace
