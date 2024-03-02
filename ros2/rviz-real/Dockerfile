@@ -1,5 +1,5 @@
 # base image for docker
-FROM osrf/ros:galactic-desktop-focal
+FROM ros:galactic-ros-core-focal
 
 # set environment variable
 ENV DEBIAN_FRONTEND=noninteractive
@@ -7,7 +7,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 # install core dependency
 RUN apt-get update && apt-get install -y \
     git tree nano htop curl iputils-ping \
-    python3 python3-pip python-is-python3
+    python3 python3-pip python-is-python3 \
+    python3-colcon-common-extensions
 
 # install ros dependency
 RUN apt-get install -y \
@@ -18,7 +19,7 @@ RUN apt-get install -y \
 
 # setup workspace
 RUN git clone -b ros2-galactic https://github.com/rigbetellabs/tortoisebot.git /ros2_ws/src/
-RUN rm -rf /ros2_ws/src/tortoisebot_control
+RUN /bin/bash -c "rm -rf /ros2_ws/src/tortoisebot_control/*"
 RUN /bin/bash -c "source /opt/ros/galactic/setup.bash; cd /ros2_ws; colcon build"
 
 # add underlay and overlay workspace
