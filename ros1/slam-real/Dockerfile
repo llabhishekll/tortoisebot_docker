@@ -8,6 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     git tree nano htop curl iputils-ping \
     python3 python3-pip python-is-python3 \
+    libraspberrypi-dev libraspberrypi0 \
     python3-wstool python3-rosdep ninja-build stow
 
 # install ros dependency
@@ -18,7 +19,8 @@ RUN apt-get install -y \
     ros-noetic-gmapping ros-noetic-navigation ros-noetic-joint-state-publisher \
     ros-noetic-robot-state-publisher ros-noetic-slam-gmapping \
     ros-noetic-dwa-local-planner ros-noetic-joint-state-publisher-gui \
-    ros-noetic-ira-laser-tools
+    ros-noetic-compressed-image-transport ros-noetic-camera-info-manager \
+    ros-noetic-diagnostic-updater ros-noetic-ira-laser-tools
 
 # setup workspace (cartographer) ik: ugly but easy to debug
 RUN /bin/bash -c "mkdir -p /ros1_ws/carto_ws; cd /ros1_ws/carto_ws; wstool init src"

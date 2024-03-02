@@ -7,7 +7,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 # install core dependency
 RUN apt-get update && apt-get install -y \
     git tree nano htop curl iputils-ping \
-    python3 python3-pip python-is-python3
+    python3 python3-pip python-is-python3 \
+    libraspberrypi-dev libraspberrypi0
 
 # install ros dependency
 RUN apt-get install -y \
@@ -16,7 +17,9 @@ RUN apt-get install -y \
     ros-noetic-urdf ros-noetic-xacro ros-noetic-rqt-image-view \
     ros-noetic-gmapping ros-noetic-navigation ros-noetic-joint-state-publisher \
     ros-noetic-robot-state-publisher ros-noetic-slam-gmapping \
-    ros-noetic-dwa-local-planner ros-noetic-joint-state-publisher-gui
+    ros-noetic-dwa-local-planner ros-noetic-joint-state-publisher-gui \
+    ros-noetic-compressed-image-transport ros-noetic-camera-info-manager \
+    ros-noetic-diagnostic-updater
 
 # setup workspace
 RUN git clone -b noetic https://github.com/rigbetellabs/tortoisebot.git /ros1_ws/src/
