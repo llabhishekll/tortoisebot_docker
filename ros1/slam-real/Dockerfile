@@ -32,7 +32,7 @@ RUN git clone -b noetic-devel https://github.com/jsk-ros-pkg/geometry2_python3.g
 RUN /bin/bash -c "sed -i '46d' /ros1_ws/carto_ws/src/cartographer/package.xml"
 RUN /bin/bash -c "cd /ros1_ws/carto_ws; rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y"
 RUN /bin/bash -c "cd /ros1_ws/carto_ws; src/cartographer/scripts/install_abseil.sh"
-RUN /bin/bash -c "cd /ros1_ws/carto_ws; source /opt/ros/noetic/setup.bash; catkin_make_isolated --install --use-ninja -j4 -l4"
+RUN /bin/bash -c "cd /ros1_ws/carto_ws; source /opt/ros/noetic/setup.bash; catkin_make_isolated --install --use-ninja -j1 -l1"
 
 # setup workspace
 RUN git clone -b noetic https://github.com/rigbetellabs/tortoisebot.git /ros1_ws/src/
