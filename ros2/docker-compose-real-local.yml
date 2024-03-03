@@ -6,13 +6,13 @@ services:
     networks:
       - default
     environment:
-      - "ROS_DOMAIN_ID=1"
+      - "ROS_DOMAIN_ID=0"
       - "DISPLAY=:1"
       - "RMW_IMPLEMENTATION=rmw_cyclonedds_cpp"
     volumes:
       - "/tmp/.X11-unix:/tmp/.X11-unix"
     ports:
-      - "7400-8000:7400-8000"
+      - "7400-65535:7400-65535"
     tty: true
 
 networks:
