@@ -21,17 +21,6 @@ services:
     ports:
       - "7400-8000:7400-8000"
     tty: true
-  rviz:
-    image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros2-rviz-real"
-    networks:
-      - default
-    environment:
-      - "ROS_DOMAIN_ID=1"
-      - "DISPLAY=:1"
-      - "RMW_IMPLEMENTATION=rmw_cyclonedds_cpp"
-    volumes:
-      - "/tmp/.X11-unix:/tmp/.X11-unix"
-    tty: true
 
 networks:
   default:
