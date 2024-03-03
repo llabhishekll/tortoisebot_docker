@@ -27,6 +27,7 @@ services:
       - "c 81:* rmw"
       - "c 188:* rmw"
       - "c 239:* rmw"
+    privileged: true
     tty: true
   slam:
     image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros1-slam-real"
