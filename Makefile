@@ -73,7 +73,7 @@ push:
 
 setup:
 	@sudo apt-get update
-	@sudo apt-get install -y docker.io docker-compose docker-buildx
+	@sudo apt-get install -y docker.io docker-compose
 	@sudo service docker start
 	@xhost +local:root
 
