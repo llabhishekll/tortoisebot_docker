@@ -8,6 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     git tree nano htop curl iputils-ping \
     python3 python3-pip python-is-python3 \
+    python3-dev python3-rpi.gpio \
     python3-colcon-common-extensions
 
 # install ros dependency
@@ -15,7 +16,7 @@ RUN apt-get install -y \
     ros-galactic-joint-state-publisher ros-galactic-robot-state-publisher \
     ros-galactic-cartographer ros-galactic-cartographer-ros ros-galactic-gazebo-plugins \
     ros-galactic-teleop-twist-keyboard ros-galactic-teleop-twist-joy ros-galactic-xacro \
-    ros-galactic-nav2* ros-galactic-urdf ros-galactic-v4l2-camera
+    ros-galactic-nav2* ros-galactic-urdf ros-galactic-v4l2-camera ros-galactic-rviz2
 
 # setup workspace
 RUN git clone -b ros2-galactic https://github.com/rigbetellabs/tortoisebot.git /ros2_ws/src/
