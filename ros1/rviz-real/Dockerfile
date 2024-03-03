@@ -7,9 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # install core dependency
 RUN apt-get update && apt-get install -y \
     git tree nano htop curl iputils-ping \
-    python3 python3-pip python-is-python3 \
-    python3-dev python3-rpi.gpio \
-    libraspberrypi-dev libraspberrypi0
+    python3 python3-pip python-is-python3
 
 # install ros dependency
 RUN apt-get install -y \
