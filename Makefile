@@ -29,9 +29,11 @@ build-amd:
 	@docker build -t llabhishekll/llabhishekll-cp22:tortoisebot-ros1-waypoints ros1/waypoints/.
 	@docker build -t llabhishekll/llabhishekll-cp22:tortoisebot-ros1-bridge ros1/bridge/.
 	@docker build -t llabhishekll/llabhishekll-cp22:tortoisebot-ros1-webapp ros1/webapp/.
+	@docker build -t llabhishekll/llabhishekll-cp22:tortoisebot-ros1-rviz-real ros1/rviz-real/.
 	# ros2
 	@docker build -t llabhishekll/llabhishekll-cp22:tortoisebot-ros2-gazebo ros2/gazebo/.
 	@docker build -t llabhishekll/llabhishekll-cp22:tortoisebot-ros2-slam ros2/slam/.
+	@docker build -t llabhishekll/llabhishekll-cp22:tortoisebot-ros2-rviz-real ros2/rviz-real/.
 	# verify
 	@docker images
 
@@ -40,10 +42,8 @@ build-arm:
 	@docker build -t llabhishekll/llabhishekll-cp22:tortoisebot-ros1-roscore-real ros1/roscore/.
 	@docker build -t llabhishekll/llabhishekll-cp22:tortoisebot-ros1-bringup-real ros1/bringup-real/.
 	@docker build -t llabhishekll/llabhishekll-cp22:tortoisebot-ros1-slam-real ros1/slam-real/.
-	@docker build -t llabhishekll/llabhishekll-cp22:tortoisebot-ros1-rviz-real ros1/rviz-real/.
 	# ros2
 	@docker build -t llabhishekll/llabhishekll-cp22:tortoisebot-ros2-bringup-real ros2/bringup-real/.
-	@docker build -t llabhishekll/llabhishekll-cp22:tortoisebot-ros2-rviz-real ros2/rviz-real/.
 	# verify
 	@docker images
 
