@@ -8,6 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     git tree nano htop curl iputils-ping \
     python3 python3-pip python-is-python3 \
+    python3-dev python3-rpi.gpio \
     libraspberrypi-dev libraspberrypi0
 
 # install ros dependency
@@ -31,6 +32,9 @@ RUN echo "source /ros1_ws/devel/setup.bash" >> ~/.bashrc
 
 # setup entrypoint
 COPY ./ros_entrypoint.sh /
+
+# setup user groups for hardware access
+RUN usermod -a -G dialout,video root
 
 # set working directory
 WORKDIR /ros1_ws
