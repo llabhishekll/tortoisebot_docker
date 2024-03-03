@@ -1,0 +1,18 @@
+version: "2.4"
+
+services:
+  rviz:
+    image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros1-rviz-real"
+    networks:
+      - default
+    environment:
+      - "ROS_MASTER_URI=http://master:11311"
+      - "DISPLAY=:1"
+    volumes:
+      - "/tmp/.X11-unix:/tmp/.X11-unix"
+    ports:
+      - "11311:11311"
+
+networks:
+  default:
+    driver: bridge

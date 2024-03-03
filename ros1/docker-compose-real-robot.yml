@@ -38,18 +38,6 @@ services:
       - "ROS_HOSTNAME=slam"
       - "ROS_MASTER_URI=http://roscore:11311"
     tty: true
-  rviz:
-    image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros1-rviz-real"
-    depends_on:
-      - roscore
-    networks:
-      - default
-    environment:
-      - "ROS_HOSTNAME=rviz"
-      - "ROS_MASTER_URI=http://roscore:11311"
-      - "DISPLAY=:1"
-    volumes:
-      - "/tmp/.X11-unix:/tmp/.X11-unix"
 
 networks:
   default:
