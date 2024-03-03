@@ -54,4 +54,4 @@ EXPOSE 11311
 
 # entry point
 ENTRYPOINT ["/ros_entrypoint.sh"]
-CMD ["roslaunch", "tortoisebot_firmware", "server_bringup.launch"]
+CMD ["roslaunch", "--wait", "tortoisebot_firmware", "server_bringup.launch"]
