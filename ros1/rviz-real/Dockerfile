@@ -1,5 +1,5 @@
 # base image for docker
-FROM ros:noetic-ros-core-focal
+FROM osrf/ros:noetic-desktop-full-focal
 
 # set environment variable
 ENV DEBIAN_FRONTEND=noninteractive

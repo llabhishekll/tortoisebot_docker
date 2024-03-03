@@ -1,5 +1,5 @@
 # base image for docker
-FROM ros:galactic-ros-core-focal
+FROM osrf/ros:galactic-desktop-focal
 
 # set environment variable
 ENV DEBIAN_FRONTEND=noninteractive
