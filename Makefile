@@ -37,6 +37,7 @@ build-amd:
 
 build-arm:
 	# ros1
+	@docker build -t llabhishekll/llabhishekll-cp22:tortoisebot-ros1-roscore-real ros1/roscore/.
 	@docker build -t llabhishekll/llabhishekll-cp22:tortoisebot-ros1-bringup-real ros1/bringup-real/.
 	@docker build -t llabhishekll/llabhishekll-cp22:tortoisebot-ros1-slam-real ros1/slam-real/.
 	@docker build -t llabhishekll/llabhishekll-cp22:tortoisebot-ros1-rviz-real ros1/rviz-real/.
@@ -53,6 +54,7 @@ clean:
 	@docker rmi -f llabhishekll/llabhishekll-cp22:tortoisebot-ros1-waypoints
 	@docker rmi -f llabhishekll/llabhishekll-cp22:tortoisebot-ros1-bridge 
 	@docker rmi -f llabhishekll/llabhishekll-cp22:tortoisebot-ros1-webapp
+	@docker rmi -f llabhishekll/llabhishekll-cp22:tortoisebot-ros1-roscore-real
 	@docker rmi -f llabhishekll/llabhishekll-cp22:tortoisebot-ros1-bringup-real
 	@docker rmi -f llabhishekll/llabhishekll-cp22:tortoisebot-ros1-slam-real
 	@docker rmi -f llabhishekll/llabhishekll-cp22:tortoisebot-ros1-rviz-real
