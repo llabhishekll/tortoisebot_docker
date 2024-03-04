@@ -3,18 +3,12 @@ version: "2.4"
 services:
   rviz:
     image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros2-rviz-real"
-    networks:
-      - default
+    network_mode: "host"
+    ipc: "host"
     environment:
       - "ROS_DOMAIN_ID=0"
       - "DISPLAY=:1"
       - "RMW_IMPLEMENTATION=rmw_cyclonedds_cpp"
     volumes:
       - "/tmp/.X11-unix:/tmp/.X11-unix"
-    ports:
-      - "7400-65535:7400-65535"
     tty: true
-
-networks:
-  default:
-    driver: bridge

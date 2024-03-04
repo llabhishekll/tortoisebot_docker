@@ -3,8 +3,12 @@ version: "2.4"
 services:
   roscore:
     image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros1-roscore-real"
-    networks:
-      - default
+    network_mode: "host"
+    ipc: "host"
+    environment:
+      - "ROS_HOSTNAME=master"
+      - "ROS_MASTER_URI=http://master:11311"
+      - "ROS_IPV6=on"
     ports:
       - "11311:11311"
     tty: true
@@ -12,11 +16,12 @@ services:
     image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros1-bringup-real"
     depends_on:
       - roscore
-    networks:
-      - default
+    network_mode: "host"
+    ipc: "host"
     environment:
-      - "ROS_HOSTNAME=bringup"
-      - "ROS_MASTER_URI=http://roscore:11311"
+      - "ROS_HOSTNAME=master"
+      - "ROS_MASTER_URI=http://master:11311"
+      - "ROS_IPV6=on"
     volumes:
       - "/dev/input:/dev/input"
       - "/dev/video0:/dev/video0"
@@ -33,13 +38,10 @@ services:
     image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros1-slam-real"
     depends_on:
       - roscore
-    networks:
-      - default
+    network_mode: "host"
+    ipc: "host"
     environment:
-      - "ROS_HOSTNAME=slam"
-      - "ROS_MASTER_URI=http://roscore:11311"
+      - "ROS_HOSTNAME=master"
+      - "ROS_MASTER_URI=http://master:11311"
+      - "ROS_IPV6=on"
     tty: true
-
-networks:
-  default:
-    driver: bridge

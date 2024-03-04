@@ -3,8 +3,8 @@ version: "2.4"
 services:
   bringup:
     image: "llabhishekll/llabhishekll-cp22:tortoisebot-ros2-bringup-real"
-    networks:
-      - default
+    network_mode: "host"
+    ipc: "host"
     environment:
       - "ROS_DOMAIN_ID=0"
       - "RMW_IMPLEMENTATION=rmw_cyclonedds_cpp"
@@ -18,11 +18,5 @@ services:
       - "c 81:* rmw"
       - "c 188:* rmw"
       - "c 239:* rmw"
-    ports:
-      - "7400-65535:7400-65535"
     privileged: true
     tty: true
-
-networks:
-  default:
-    driver: bridge
